@@ -3,11 +3,11 @@ import {NavigationIndependentTree} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const menuItems = [
-  {id: '1', category: 'Coffee', name: 'Mocha', price: 'Php 100.00', desc: '[INSERT CONTENT HERE]'},
-  {id: '2', category: 'Coffee', name: 'Cappuccino', price: 'Php 100.00', desc: '[INSERT CONTENT HERE]'},
-  {id: '3', category: 'Coffee', name: 'Affogato', price: 'Php 110.00', desc: '[INSERT CONTENT HERE]'},
-  {id: '4', category: 'Coffee', name: 'Café au Lait', price: 'Php 120.00', desc: '[INSERT CONTENT HERE]'},
-  {id: '5', category: 'Coffee', name: 'Caramel Macchiato', price: 'Php 125.00', desc: '[INSERT CONTENT HERE]'},
+  {id: '1', category: 'Coffee', name: 'Mocha', price: 'Php 100.00', desc: 'Espresso with steamed milk and sweet chocolate.'},
+  {id: '2', category: 'Coffee', name: 'Cappuccino', price: 'Php 100.00', desc: 'Equal parts espresso, steamed milk and thick layer of foam.'},
+  {id: '3', category: 'Coffee', name: 'Affogato', price: 'Php 110.00', desc: 'Espresso with vanilla ice cream.'},
+  {id: '4', category: 'Coffee', name: 'Café au Lait', price: 'Php 120.00', desc: 'Brewed coffee with steamed milk.'},
+  {id: '5', category: 'Coffee', name: 'Caramel Macchiato', price: 'Php 125.00', desc: 'Espresso with steamed milk, vanilla syrup and caramel drizzle.'},
   {id: '6', category: 'Waffles', name: 'Chocolate'},
   {id: '7', category: 'Waffles', name: 'Maple'},
   {id: '8', category: 'Waffles', name: "Cookies 'n' Cream"}
@@ -23,14 +23,14 @@ function HomeScreen({navigation}: any) {
         data={menuItems}
         keyExtractor={(item) => item.id}
         renderItem={({item}) => (
-          <View style={styles.item}>
+          <View style={styles.menuItem}>
             <Text style={styles.category}>{item.category}</Text>
             <Text style={styles.name}>{item.name}</Text>
             <TouchableOpacity
               style={styles.viewItemButton}
               onPress={() => navigation.navigate('Detail', {coffee: item})}
             >
-              <Text style={styles.viewItemText}>View Item</Text>
+              <Text style={styles.buttonText}>View Item</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -44,17 +44,17 @@ function DetailScreen({route, navigation}: any) {
 
   return (
     <View style={styles.detailScreenContainer}>
-    <View style={styles.item}>
+    <View style={styles.itemBorders}>
         <Text style={styles.category}>{coffee.category}</Text>
         <Text style={styles.name}>{coffee.name}</Text>
         <Text style={styles.price}>{coffee.price}</Text>
-        <Text style={styles.category}>{coffee.desc}</Text>
+        <Text style={styles.desc}>{coffee.desc}</Text>
 
         <TouchableOpacity
           style={styles.backToMenuButton}
           onPress={() => navigation.goBack()}
         >
-          <Text style={styles.viewItemText}>Back to Menu</Text>
+          <Text style={styles.buttonText}>Back to Menu</Text>
         </TouchableOpacity>
     </View>
     </View>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  item: {
+  menuItem: {
     marginBottom: 12,
     borderBottomColor: '#FAF9F5',
     borderBottomWidth: 2
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
 
-  viewItemText: {
+  buttonText: {
     color: '#FAF9F5',
     fontWeight: 'bold',
     textAlign: 'center',
@@ -129,10 +129,26 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
+  itemBorders: {
+    paddingBottom: 12,
+    borderBottomColor: '#FAF9F5',
+    borderBottomWidth: 2,
+    paddingTop: 12,
+    borderTopColor: '#FAF9F5',
+    borderTopWidth: 2
+  },
+
   price: {
-    fontSize: 18,
+    fontSize: 16.5,
     color: '#00ff00',
     fontWeight: 'bold'
+  },
+
+  desc: {
+    fontSize: 11,
+    color: '#d3d3d3',
+    fontWeight: 'bold',
+    fontStyle: 'italic'
   },
 
   backToMenuButton: {
@@ -142,5 +158,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#30302E',
     borderRadius: 10,
     margin: 10,
-  },
+  }
 });
