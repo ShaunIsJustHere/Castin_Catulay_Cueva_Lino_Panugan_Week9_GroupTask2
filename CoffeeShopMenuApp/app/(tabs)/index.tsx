@@ -3,11 +3,11 @@ import {NavigationIndependentTree} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const menuItems = [
-  {id: '1', category: 'Hot Drinks', name: 'Americano', desc: 'Bold and strong black coffee brewed with espresso shots.'},
-  {id: '2', category: 'Hot Drinks', name: 'Cappuccino', desc: 'Classic Italian coffee with equal parts espresso, steamed milk, and foam.'},
-  {id: '3', category: 'Hot Drinks', name: 'Latte', desc: 'Smooth espresso blended with creamy steamed milk.'},
-  {id: '4', category: 'Cold Drinks', name: 'Iced Coffee', desc: 'Chilled brewed coffee served over ice for a refreshing kick.'},
-  {id: '5', category: 'Cold Drinks', name: 'Frappuccino', desc: 'Blended iced coffee drink topped with whipped cream.'},
+  {id: '1', category: 'Coffee', name: 'Mocha', price: 'Php 100.00', desc: '[INSERT CONTENT HERE]'},
+  {id: '2', category: 'Coffee', name: 'Cappuccino', price: 'Php 100.00', desc: '[INSERT CONTENT HERE]'},
+  {id: '3', category: 'Coffee', name: 'Affogato', price: 'Php 110.00', desc: '[INSERT CONTENT HERE]'},
+  {id: '4', category: 'Coffee', name: 'Café au Lait', price: 'Php 120.00', desc: '[INSERT CONTENT HERE]'},
+  {id: '5', category: 'Coffee', name: 'Caramel Macchiato', price: 'Php 125.00', desc: '[INSERT CONTENT HERE]'},
   {id: '6', category: 'Waffles', name: 'Chocolate'},
   {id: '7', category: 'Waffles', name: 'Maple'},
   {id: '8', category: 'Waffles', name: "Cookies 'n' Cream"}
@@ -47,6 +47,7 @@ function DetailScreen({route, navigation}: any) {
     <View style={styles.item}>
         <Text style={styles.category}>{coffee.category}</Text>
         <Text style={styles.name}>{coffee.name}</Text>
+        <Text style={styles.price}>{coffee.price}</Text>
         <Text style={styles.category}>{coffee.desc}</Text>
 
         <TouchableOpacity
@@ -93,13 +94,13 @@ const styles = StyleSheet.create({
   },
 
   category: {
-    fontSize: 12,
+    fontSize: 15,
     color: '#888',
     fontWeight: 'bold'
   },
 
   name: {
-    fontSize: 18,
+    fontSize: 21,
     color: '#FAF9F5',
     fontWeight: 'bold'
   },
@@ -126,6 +127,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#30302E',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  price: {
+    fontSize: 18,
+    color: '#00ff00',
+    fontWeight: 'bold'
   },
 
   backToMenuButton: {
